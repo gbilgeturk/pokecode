@@ -12,6 +12,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.gbilgeturk.pokemonapp.ui.component.PokemonBottomAppBar
 import com.gbilgeturk.pokemonapp.ui.component.PokemonFloatingActionBar
 import com.gbilgeturk.pokemonapp.ui.component.PokemonScaffold
+import com.gbilgeturk.pokemonapp.ui.screen.episode.EpisodeScreen
 import com.gbilgeturk.pokemonapp.ui.screen.favorite.FavoriteScreen
 import com.gbilgeturk.pokemonapp.ui.screen.pokemondetail.PokemonDetailScreen
 import com.gbilgeturk.pokemonapp.ui.screen.pokemonlist.PokemonListScreen
@@ -59,13 +60,17 @@ fun NavGraph(startDestination: String = NavigationScreen.Pokemons.route) {
             composable(NavigationScreen.Pokemons.route) {
                 PokemonListScreen(
                     navigateToDetail = {
-                        navController.navigate(NavigationScreen.PokemonDetail.route.plus("?characterDetail=${it.toJson()}"))
+                        navController.navigate(NavigationScreen.PokemonDetail.route.plus("?characterDetail=${it}"))
                     }
                 )
             }
 
             composable(NavigationScreen.Episodes.route) {
-
+                EpisodeScreen(
+                    navigateToBack = {
+                        navController.popBackStack()
+                    }
+                )
             }
             composable(
                 NavigationScreen.PokemonDetail.route.plus("?characterDetail={characterDetail}"),
@@ -101,8 +106,7 @@ fun NavGraph(startDestination: String = NavigationScreen.Pokemons.route) {
             }
 
             composable(NavigationScreen.Settings.route) {
-                SettingsScreen(
-                )
+                SettingsScreen()
             }
 
             composable(

@@ -2,6 +2,7 @@ package com.gbilgeturk.pokemonapp.ui.screen.pokemonlist
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -38,17 +39,19 @@ fun PokemonListScreen(
     val viewModel = koinViewModel<PokemonListViewModel>()
     val viewState by viewModel.uiState.collectAsState()
 
-    PokemonList(viewModel = viewModel)
+    PokemonList(viewModel = viewModel, navigateToDetail)
 
 }
 
 @Composable
-fun PokemonList(viewModel: PokemonListViewModel) {
+fun PokemonList(viewModel: PokemonListViewModel, navigateToDetail: (String?) -> Unit) {
     val usersData = viewModel.pokemonPager.collectAsLazyPagingItems()
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(usersData) { pokemon ->
 
-            Row(modifier = Modifier.fillMaxWidth().height(64.dp)) {
+            Row(modifier = Modifier.fillMaxWidth().height(64.dp).clickable {
+                navigateToDetail(pokemon?.name)
+            }) {
                 PokemonNetworkImage(imageURL = pokemon?.getImageUrl())
                 Text(modifier = Modifier.fillMaxWidth(), text = pokemon?.name ?: "Empty pokemon")
 
