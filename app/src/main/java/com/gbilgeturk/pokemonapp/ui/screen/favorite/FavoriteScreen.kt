@@ -2,11 +2,11 @@ package com.gbilgeturk.pokemonapp.ui.screen.favorite
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import com.gbilgeturk.pokemonapp.data.model.dto.PokemonDto
+import com.gbilgeturk.pokemonapp.data.model.dto.Pokemon
 
 @Composable
 fun FavoriteScreen(
-    navigateCharacterDetail: (PokemonDto) -> Unit
+    navigateCharacterDetail: (Pokemon) -> Unit
 ) {
     Text(text = "favorite")
 }

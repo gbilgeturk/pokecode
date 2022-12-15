@@ -118,6 +118,9 @@ dependencies {
     implementation "com.airbnb.android:lottie-compose:$lottie_version"
 
     implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist_version"
+
+    //Coil
+    implementation("io.coil-kt:coil-compose:$coil_version")
 }
 
 // Allow references to generated code
