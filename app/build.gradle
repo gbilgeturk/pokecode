@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
 
+
 }
 
 android {
@@ -121,6 +122,9 @@ dependencies {
 
     //Coil
     implementation("io.coil-kt:coil-compose:$coil_version")
+
+    implementation "androidx.compose.animation:animation:1.0.0-alpha02"
+
 }
 
 // Allow references to generated code

@@ -8,5 +8,6 @@ import com.gbilgeturk.pokemonapp.data.model.dto.Pokemon
 fun FavoriteScreen(
     navigateCharacterDetail: (Pokemon) -> Unit
 ) {
+    
     Text(text = "favorite")
 }
